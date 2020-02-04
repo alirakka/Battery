@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="battery"> 
+        <div id="progress" style="height: 70px;background-color: green;width: -1vw;"></div>
+    </div>
+    <div>
+        <p id="text" style="color: black;text-align: center;"> </p>
+    </div>
+<script>
+    navigator.getBattery().then(function(battery) {
+    battery.onlevelchange = function() {
+    console.log(this.level);
+};
+    document.querySelector("#text").innerHTML += "Current battery level is : " +Math.trunc(battery.level*100) + "%";
+    
+        if(battery.level*100 == 100){
+            document.getElementById("progress").style.width = `-1vw`
+        }
+        else{
+        num = Math.trunc(battery.level*100);        
+        document.getElementById("progress").style.width = `${num*1.354}pt`
+        }
+
+    
+if(Math.trunc(battery.level*100) <= 20){
+    document.getElementById("progress").style.backgroundColor = "yellow";
+}
+else{
+    document.getElementById("progress").style.backgroundColor = "green";
+}
+});
+</script>
+</body>
+</html>

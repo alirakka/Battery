@@ -1,0 +1,21 @@
+.battery {
+    margin: 0px auto;
+      background-color: #fff;
+      border: 5px solid #000;
+      height: 70px;
+      position: relative;
+      width: 180px;
+      display: table;
+    }
+     .battery::after {
+      background-color: #000;
+      content: "";
+      display: block;
+      height: 20px;
+      position: absolute;
+      right: -12px;
+      top: 20px;
+      width: 10px;
+      display: table;
+    } 
+    
